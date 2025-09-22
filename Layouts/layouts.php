@@ -1,18 +1,121 @@
 <?php
 class layouts {
     public function header($conf) {
-        ?>
-        <header>
-            <h1>Welcome to <?php print $conf['site_name']; ?></h1>
-        </header>
-        <?php
+?>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+      <meta name="generator" content="Astro v5.13.2">
+      <title>ICS Academy</title>
+      <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <meta name="theme-color" content="#712cf9">
+   </head>
+<?php
+    }
+    public function navbar($conf) {
+?>
+   <body>
+
+      <main>
+         <div class="container py-4">
+            <header class="pb-3 mb-4 border-bottom">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+            <div class="container-fluid">
+               <a class="navbar-brand" href="index.php">PHPMailer</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> 
+               <div class="collapse navbar-collapse" id="navbarsExample05">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                     <li class="nav-item"> <a class="nav-link" href="index.php">Home</a> </li>
+                     <?php if (!isset($_SESSION['user_id'])): ?>
+                     <li class="nav-item"> <a class="nav-link" href="signup.php">Sign Up</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="signin.php">Sign In</a> </li>
+                     <?php endif; ?>
+                     <?php if (isset($_SESSION['user_id'])): ?>
+                     <li class="nav-item"> <a class="nav-link" href="users.php">Users</a> </li>
+                     <li class="nav-item"> <a class="nav-link" href="logout.php">Logout</a> </li>
+                     <?php endif; ?>
+
+                  </ul>
+                  <form role="search"> <input class="form-control" type="search" placeholder="Search" aria-label="Search"> </form>
+                  <?php if (isset($_SESSION['user_id'])): ?>
+                     <div class="navbar-text">
+                        Logged in as <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                     </div>
+                  <?php endif; ?>
+               </div>
+            </div>
+         </nav>
+            </header>
+<?php
     }
 
-    public function footer($conf) {
+    public function banner($conf) {
         ?>
-        <footer>
-            <p>Copyright &copy; <?php echo date("Y"); ?> <?php print $conf['site_name']; ?> - All Rights Reserved</p>
-        </footer>
+            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+               <div class="container-fluid py-5">
+                  <h1 class="display-5 fw-bold">ICS A Academy</h1>
+                  <p class="col-md-8 fs-4">Welcome to ICS A Academy. Where we learn about PHPMailers</p>
+                  <button class="btn btn-primary btn-lg" type="button">See More</button> 
+               </div>
+            </div>
         <?php
     }
+    public function content($conf) {
+        ?>
+                <div class="row align-items-md-stretch">
+               <div class="col-md-6">
+                  <div class="h-100 p-5 text-bg-dark rounded-3">
+                     <h2>Our Classes</h2>
+                     <p>The Classes at ICS A Academy Are amazing, See now</p>
+                     <button class="btn btn-outline-light" type="button">Our Classes</button> 
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+                     <h2>Our Teachers</h2>
+                     <p>Meet our dedicated teachers who are passionate about helping you succeed.</p>
+                     <button class="btn btn-outline-secondary" type="button">Our Teachers</button> 
+                  </div>
+               </div>
+            </div>
+        <?php
+
+    }
+    public function form_content($conf, $ObjForm) {
+        ?>
+                <div class="row align-items-md-stretch">
+               <div class="col-md-12">
+                  <div class="h-100 p-5 text-bg-light rounded-3">
+                     <?php if($_SERVER['PHP_SELF'] == '/IAP/signup.php') { $ObjForm->signup(); }else{ $ObjForm->signin();} ?>
+                  </div>
+               </div>
+               <!-- <div class="col-md-6">
+                  <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+                     <h2>Add borders</h2>
+                     <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+                     <button class="btn btn-outline-secondary" type="button">Example button</button> 
+                  </div>
+               </div> -->
+            </div>
+        <?php
+
+    }
+    public function footer($conf) {
+?>
+
+            <footer class="pt-3 mt-4 text-body-secondary border-top">
+            <p>Copyrights &copy; <?php echo date("Y") . " {$conf['site_name']}. All rights reserved.</p>"; ?>
+            </footer>
+         </div>
+      </main>
+      <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+   </body>
+</html>
+
+<?php
+    }
+
 }

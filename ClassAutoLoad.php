@@ -1,3 +1,4 @@
+
 <?php
  //Load Composer's autoloader (created by composer, not included with PHPMailer)
  require 'plugins/PHPMailer/vendor/autoload.php';
