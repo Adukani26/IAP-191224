@@ -17,8 +17,8 @@ $conf['site_lang'] = 'en';
 //Email Configuration
 $conf['mail_type']  = 'smtp';
 $conf['smtp_host_']  = 'smtp.gmail.com';
-$conf['smtp_user']  = 'adan.konse@strathmore.edu';
-$conf['stmp_pass']  = 'dryn jelu bram eczd';
+$conf['smtp_user']  = '';
+$conf['stmp_pass']  = '';
 $conf['stmp_port']  = '465';
 $conf['stmp_secure']  = 'ssl';
 
